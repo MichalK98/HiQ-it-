@@ -7,9 +7,6 @@ const findMostFrequentWord = (text: string) => {
   if (words.length === 0) return '';
 
   // Count every word eg. { hello: 1, world: 1 }
-  words.reduce((acc: Array<string>, a: number | string, index: number) => {
-    return [];
-  }, []);
   const wordsObject = words.reduce((acc: { [x: string]: number }, curr: string) => {
     const current = curr.toLocaleLowerCase();
 
@@ -23,8 +20,9 @@ const findMostFrequentWord = (text: string) => {
   }, {});
 
   // Find most frequent word in wordsObject
-  let arr: number[] = Object.values(wordsObject);
-  let mostFrequentWord = Math.max(...arr);
+  const mostFrequentWord = Object.keys(wordsObject).reduce((acc, curr) => {
+    return wordsObject[acc] > wordsObject[curr] ? acc : curr;
+  });
 
   return mostFrequentWord || words[0];
 };
