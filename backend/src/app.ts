@@ -46,11 +46,13 @@ server.listen(port, async () => {
 
     const text = (await readTextFile(req.file.path)) || '';
     const mostFrequentWord = findMostFrequentWord(text) || '';
+    const modifiedText = text.replaceAll(mostFrequentWord, `foo${mostFrequentWord}bar`);
 
     res.json({
       status: 200,
       text,
       mostFrequentWord,
+      modifiedText,
     });
   });
 });
