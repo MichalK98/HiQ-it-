@@ -6,6 +6,7 @@ import multer from 'multer';
 import config from 'config';
 import logger from './utils/logger';
 import readTextFile from './utils/readTextFile';
+import findMostFrequentWord from './utils/findMostFrequentWord';
 
 const port = config.get<number>('port');
 
@@ -44,10 +45,12 @@ server.listen(port, async () => {
     }
 
     const text = (await readTextFile(req.file.path)) || '';
+    const mostFrequentWord = findMostFrequentWord(text) || '';
 
     res.json({
       status: 200,
       text,
+      mostFrequentWord,
     });
   });
 });
