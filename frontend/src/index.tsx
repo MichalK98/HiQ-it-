@@ -16,7 +16,6 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    HiQ it!
     <GlobalStyle />
     <RouterProvider router={router} />
   </React.StrictMode>

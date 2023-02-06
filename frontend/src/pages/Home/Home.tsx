@@ -1,5 +1,11 @@
+import { CommonLayout } from '../../layouts';
+
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <CommonLayout>
+      <h1>Home</h1>
+    </CommonLayout>
+  );
 };
 
 export default Home;
