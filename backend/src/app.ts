@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import { promises as fs } from 'fs';
 import multer from 'multer';
 import config from 'config';
 import logger from './utils/logger';
@@ -46,7 +47,10 @@ server.listen(port, async () => {
 
     const text = (await readTextFile(req.file.path)) || '';
     const mostFrequentWord = findMostFrequentWord(text) || '';
-    const modifiedText = text.replaceAll(mostFrequentWord, `foo${mostFrequentWord}bar`);
+    const modifiedText = text.replaceAll(mostFrequentWord, `HiQ${mostFrequentWord}`);
+
+    // Remove temp file
+    fs.unlink(req.file.path);
 
     res.json({
       status: 200,
