@@ -2,13 +2,26 @@ import express, { Request, Response } from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import multer from 'multer';
 import config from 'config';
 import logger from './utils/logger';
+import readTextFile from './utils/readTextFile';
 
 const port = config.get<number>('port');
 
 const app = express();
 const server = http.createServer(app);
+
+const storage = multer.diskStorage({
+  destination: function (_req, _file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (_req, _file, cb) {
+    cb(null, Date.now() + '.txt');
+  },
+});
+
+const upload = multer({ storage: storage });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -20,6 +33,21 @@ server.listen(port, async () => {
   app.get('/', (_req: Request, res: Response) => {
     res.json({
       message: 'HiQ it!',
+    });
+  });
+
+  app.post('/api/file_accept', upload.single('file'), async (req: Request, res: Response) => {
+    // File is missing
+    if (!req.file) {
+      res.json({ status: 404 });
+      return;
+    }
+
+    const text = (await readTextFile(req.file.path)) || '';
+
+    res.json({
+      status: 200,
+      text,
     });
   });
 });
