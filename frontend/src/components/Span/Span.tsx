@@ -7,12 +7,12 @@ type Props = {
   color?: string;
 };
 
-const StyledParagraph = styled.p<Props>`
+const StyledSpan = styled.span<Props>`
   color: ${({ color }) => (color ? color : theme.palette.black)};
 `;
 
-const Text = ({ color, children }: Props) => {
-  return <StyledParagraph color={color}>{children}</StyledParagraph>;
+const Span = ({ color, children }: Props) => {
+  return <StyledSpan color={color}>{children}</StyledSpan>;
 };
 
-export default Text;
+export default Span;

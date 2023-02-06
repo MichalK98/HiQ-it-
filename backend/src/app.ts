@@ -47,7 +47,10 @@ server.listen(port, async () => {
 
     const text = (await readTextFile(req.file.path)) || '';
     const mostFrequentWord = findMostFrequentWord(text) || '';
-    const modifiedText = text.replaceAll(mostFrequentWord, `foo${mostFrequentWord}bar`);
+    const modifiedText = text.replaceAll(
+      mostFrequentWord,
+      `<span style="color: #ff0095">foo${mostFrequentWord}bar</span>`
+    );
 
     // Remove temp file
     fs.unlink(req.file.path);
