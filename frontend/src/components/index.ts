@@ -1,5 +1,6 @@
+import Heading from './Heading';
 import Text from './Text';
 
 export * from './elements';
 
-export { Text };
+export { Heading, Text };

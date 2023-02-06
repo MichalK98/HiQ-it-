@@ -1,9 +1,10 @@
+import { Heading } from '../../components';
 import { CommonLayout } from '../../layouts';
 
 const Home = () => {
   return (
     <CommonLayout>
-      <h1>Home</h1>
+      <Heading>Home</Heading>
     </CommonLayout>
   );
 };

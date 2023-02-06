@@ -1,9 +1,10 @@
+import { Heading } from '../../components';
 import { CommonLayout } from '../../layouts';
 
 const NotFound = () => {
   return (
     <CommonLayout>
-      <h1>NotFound</h1>
+      <Heading>NotFound</Heading>
     </CommonLayout>
   );
 };

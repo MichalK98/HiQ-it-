@@ -10,4 +10,5 @@ export const theme = {
     lg: 1200,
   },
   spacing: [0, $spacer * 0.25, $spacer * 0.5, $spacer, $spacer * 1.5, $spacer * 3],
+  headings: [48, 32, 24, 20, 18, 16],
 };
