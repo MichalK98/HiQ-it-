@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import parse from 'html-react-parser';
+import { toast } from 'react-toastify';
 import { theme } from '../../theme';
 import { Heading, Span, Text } from '../../components';
 import { CommonLayout } from '../../layouts';
@@ -35,9 +36,15 @@ const Home = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        setData(result);
+        if (result.status !== 200) {
+          toast.warning('Something went wrong!');
+        } else {
+          toast.success('Most frequent word found!');
+          setData(result);
+        }
       })
       .catch((error) => {
+        toast.error(error.message);
         console.error('Error:', error);
       });
   };

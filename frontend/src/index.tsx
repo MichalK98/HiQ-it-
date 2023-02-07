@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { GlobalStyle } from './GlobalStyle';
 import { Home, NotFound } from './pages';
 
@@ -18,5 +20,6 @@ root.render(
   <React.StrictMode>
     <GlobalStyle />
     <RouterProvider router={router} />
+    <ToastContainer />
   </React.StrictMode>
 );
