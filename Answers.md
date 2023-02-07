@@ -2,6 +2,8 @@
 
 [GitHub repo](https://github.com/MichalK98/HiQ-it-)
 
+To start the porject run `npm i` and `npm start` in both frontend and backend. Read all README.md files for more information.
+
 ## How long time did you end up spending on this coding test?
 
 I spended roughly 10h on this HiQ it! project.
