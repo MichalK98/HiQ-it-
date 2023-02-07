@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Text } from '../../components';
+import { Image } from '../../components';
 import { theme } from '../../theme';
 
 const StyledHeader = styled.header`
@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
 const Header = () => {
   return (
     <StyledHeader>
-      <Text color={theme.palette.white}>HiQ it!</Text>
+      <Image src='/images/logo.svg' alt='HiQ it - logo' />
     </StyledHeader>
   );
 };
