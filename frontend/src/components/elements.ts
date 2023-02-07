@@ -5,6 +5,8 @@ type SpacingRange = 0 | 1 | 2 | 3 | 4 | 5;
 
 type FlexDirections = 'row' | 'column';
 
+type FlexJustify = 'flex-start' | 'center';
+
 type BoxProps = {
   // Margin
   m?: SpacingRange;
@@ -35,6 +37,7 @@ type BoxProps = {
 
 type FlexProps = {
   direction?: FlexDirections;
+  justify?: FlexJustify;
 };
 
 export const Box = styled.div<BoxProps>`
@@ -76,6 +79,7 @@ export const Container = styled(Box)`
 
 export const Flex = styled(Box)<FlexProps>`
   display: flex;
+  ${({ justify }) => justify && `justify-content: ${justify};`}
   ${({ direction }) => direction && `flex-direction: ${direction};`}
 `;
 

@@ -1,10 +1,11 @@
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
 type Props = {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   color?: string;
-  children: string;
+  children: ReactNode;
 };
 
 const StyledHeading = styled.h1<Props>`
@@ -12,6 +13,7 @@ const StyledHeading = styled.h1<Props>`
   line-height: 1.2;
   margin: 0;
   margin-bottom: 0.5rem;
+  text-align: center;
   ${({ variant }) => {
     switch (variant) {
       case 'h1':
