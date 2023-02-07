@@ -2,7 +2,7 @@ import logger from './logger';
 
 const findMostFrequentWord = (text: string) => {
   logger.info('Find the most frequent word');
-  let words: string[] = text.match(/(\w+)/g) || [];
+  let words: string[] = text.match(/(\w[a-z]+)/g) || [];
 
   if (words.length === 0) return '';
 

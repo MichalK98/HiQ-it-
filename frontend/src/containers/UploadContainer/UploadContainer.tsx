@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import parse from 'html-react-parser';
 import { toast } from 'react-toastify';
 import { theme } from '../../theme';
 import { Box, Button, Flex, Heading, Span, Text, Textarea, Upload } from '../../components';
@@ -20,6 +19,8 @@ const UploadContainer = () => {
     text: '',
     mostFrequentWord: '',
   });
+
+  console.log('data', data);
 
   const changeHandler = (e: React.SyntheticEvent<EventTarget>) => {
     setSelectedFile((e.target as HTMLFormElement).files[0]);
@@ -98,7 +99,7 @@ const UploadContainer = () => {
         {data.modifiedText.length >= 1 && (
           <Box mt={4}>
             <Text>Foo-bar'ed text:</Text>
-            <Textarea>{parse(data.modifiedText || '')}</Textarea>
+            <Textarea dangerouslySetInnerHTML={{ __html: data.modifiedText }}></Textarea>
           </Box>
         )}
       </Box>

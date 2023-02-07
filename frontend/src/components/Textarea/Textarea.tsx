@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { theme } from '../../theme';
 
 type Props = {
-  children: ReactNode;
+  children?: ReactNode;
   color?: string;
+  dangerouslySetInnerHTML?: any;
 };
 
 const StyledParagraph = styled.p<Props>`
@@ -16,8 +17,12 @@ const StyledParagraph = styled.p<Props>`
   overflow: auto;
 `;
 
-const Textarea = ({ color, children }: Props) => {
-  return <StyledParagraph color={color}>{children}</StyledParagraph>;
+const Textarea = ({ color, children, dangerouslySetInnerHTML }: Props) => {
+  return (
+    <StyledParagraph color={color} dangerouslySetInnerHTML={dangerouslySetInnerHTML}>
+      {children}
+    </StyledParagraph>
+  );
 };
 
 export default Textarea;
